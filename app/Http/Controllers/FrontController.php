@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Patient;
 
 class FrontController extends Controller
 {
     function index()
     {
-        return "this is the index page";
+        $patients = Patient::all();
+        return view('chc/list-view', ['patients' => $patients]);
     }
 }
