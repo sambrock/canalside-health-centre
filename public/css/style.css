@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body{
+    background: #f9fcfa;
+    padding: 0;
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+    font-weight: 200;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    height: 50px;
+    border-bottom: 1px #e5e5e5 solid;
+}
+main{
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    height: 92vh;
+}
+/* sidebar */
+.sidebar{
+    grid-column-start: 1;
+    background: #fff;
+    border-right: 1px #e5e5e5 solid;
+    padding: 0 20px;
+}
+.sidebar-header{
+
+}
+.container{
+    grid-column-start: 2;
+}
