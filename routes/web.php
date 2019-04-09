@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'FrontController@index');
 Route::get('index', 'FrontController@index');
+Route::get('details/{filmId}','FrontController@details');
+Route::get('register','FrontController@register');
+Route::post('save','FrontController@save');
+Route::get('deletelist','FrontController@deleteList');
+Route::post('delete','FrontController@delete');
+
