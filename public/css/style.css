@@ -2,7 +2,7 @@
 
 body{
     background: #f9fcfa;
-    padding: 0;
+    padding-top: 50px;
     margin: 0;
     font-family: "Open Sans", sans-serif;
     font-style: normal;
@@ -13,24 +13,59 @@ header{
     align-items: center;
     justify-content: center;
     background: #fff;
-    height: 50px;
-    border-bottom: 1px #e5e5e5 solid;
+    min-height: 50px;
+    border-bottom: 1px solid #ECEDF2;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+h1, h2, h3{
+    margin: 0;
+    line-height: normal;
+}
+h1{
+    line-height: 30px;
+    margin: 0 0 20px;
+    font-size: 2em;
 }
 main{
     display: grid;
     grid-template-columns: 200px 1fr;
     height: 92vh;
 }
+.wrapper{
+    grid-column-start: 2;
+    /*
+    display: flex;
+    justify-content: center;
+    */
+    padding: 30px 20px;
+}
+
 /* sidebar */
 .sidebar{
     grid-column-start: 1;
     background: #fff;
-    border-right: 1px #e5e5e5 solid;
-    padding: 0 20px;
+    border-right: 1px #ECEDF2 solid;
+    padding: 30px 20px;
 }
 .sidebar-header{
 
 }
-.container{
-    grid-column-start: 2;
+
+/* register */
+.register{
+    width: 1000px;
+}
+form label{
+    font-size: 1.2em;
+}
+form input{
+    display: block;
+    width: 100%;
+    padding: 5px 10px;
+    margin: 0 0 10px;
 }
