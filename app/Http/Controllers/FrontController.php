@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Patient;
+use App\Doctor;
 
 class FrontController extends Controller
 {
@@ -19,7 +20,8 @@ class FrontController extends Controller
     }
     function register()
     {
-        return view('chc/register-view');
+        $doctors = Doctor::all();
+        return view('chc/register-view', ['doctors' => $doctors]);
     }
     function save(Request $request)
     {
@@ -36,6 +38,12 @@ class FrontController extends Controller
         $patient->postcode=$request->postcode;
         $patient->mobile_number=$request->mobile;
         $patient->gender=$request->gender;
+        $year=$request->year;
+        $month=$request->month;
+        $day=$request->day;
+        $dob=$year."-".$month."-".$day;
+        $patient->dob=$dob;
+        $patient->doctor_id=$request->doctor;
         $patient->save();
         return redirect('index');
     }

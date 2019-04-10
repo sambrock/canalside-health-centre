@@ -63,10 +63,14 @@
         </div>
         <h3>Doctor details</h3>
         <div class="form-control">
-            <label for="gender">Doctor:</label>
-            <input type="text" id="gender" name="gender">
+            <label for="doctor">Doctor:</label>
+            <select name="doctor">
+                @foreach ($doctors as $doctor)
+                <option value='{{$doctor->id}}'>{{$doctor->firstname}} {{$doctor->lastname}}</option>
+                @endforeach
+            </select>
         </div>
-        <input type="submit" name="submitBtn" value="Add Patient">
+        <input id="add-btn" type="submit" name="submitBtn" value="Add Patient">
     </form>
 </section>
 @endsection
