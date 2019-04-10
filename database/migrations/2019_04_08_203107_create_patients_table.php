@@ -21,7 +21,7 @@ class CreatePatientsTable extends Migration
             $table->string('postcode', 9);
             $table->decimal('mobile_number', 11, 0);
             $table->string('gender', 6);
-            $table->date('age');
+            $table->date('dob');
             $table->unsignedInteger('doctor_id');
             $table->timestamps();
         });
