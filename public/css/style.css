@@ -28,8 +28,12 @@ h1, h2, h3{
 }
 h1{
     line-height: 30px;
-    margin: 0 0 20px;
+    margin: 0 0 30px;
     font-size: 2em;
+}
+h3{
+    font-size: 1.2em;
+    margin: 0 0 15px;
 }
 main{
     display: grid;
@@ -58,14 +62,78 @@ main{
 
 /* register */
 .register{
-    width: 1000px;
+    width: 600px;
 }
-form label{
-    font-size: 1.2em;
+
+.form-controls{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    margin: 0 0 20px;
 }
-form input{
+.form-control label{
     display: block;
-    width: 100%;
-    padding: 5px 10px;
-    margin: 0 0 10px;
+    font-size: 1em;
+    margin: 0 0 5px;
+    color: #606060;
+}
+.form-control input, .form-control select{
+    display: inline-block;
+    width: 300px;
+    padding: 10px 10px;
+    font-size: 1em;
+    border: 1px solid #DCDCDC;
+    border-radius: 5px;
+}
+.example{
+    font-size: 0.8em;
+    color: #A8A8A8;
+    margin: 0 0 0 20px;
+}
+#dob-controls{
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+}
+.dob-control #day, .dob-control #month, .dob-control #year{
+    text-align: center;
+}
+.dob-control{
+    display: flex;
+    align-items: center;
+}
+.dob-control label{
+    font-size: 0.7em;
+    margin: 0 5px 0 0;
+    display: block;
+}
+.dob-control #day, .dob-control #month{
+    width: 50px;
+}
+.dob-control #year{
+    width: 80px;
+}
+#gender-controls{
+    display: flex;
+    width: 300px;
+}
+#gender-controls label{
+    color: #000;
+}
+#gender-controls .form-radio{
+    display: inline;
+    width: 30px;
+    margin: 15 0 0 15px;
+}
+#gender-controls label:nth-child(1) .form-radio{
+    margin: 15 0 0 0;
+}
+.form-control:nth-child(3){
+    grid-column: 1 / span 2;
+}
+.form-control:nth-child(3) input{
+    width: 620px;
+}
+.form-control input:focus, .form-control select:focus{
+    outline-color: #74bd83;
 }
