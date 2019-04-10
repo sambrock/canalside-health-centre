@@ -11,16 +11,25 @@
         <main>
             <div class="sidebar">
                 <span class="sidebar-header">Patient</span>
-                <ul>
-                    <li><a href="{{url('list')}}">Read</a></li>
-                    <li><a href="{{url('register')}}">Register</a></li>
-                    <li><a href="{{url('deletelist')}}">Delete </a></li>
-                </ul>
+                <nav>
+                    <ul>
+                        <li><a href="{{url('list')}}">List</a></li>
+                        <li><a href="{{url('register')}}">Register</a></li>
+                        <li><a href="{{url('deletelist')}}">Delete </a></li>
+                    </ul>
+                </nav>
+                <span class="sidebar-header">Appointment</span>
+                <nav>
+                    <ul>
+                        <li><a href="{{url('list')}}">Book</a></li>
+                        <li><a href="{{url('register')}}">Delete</a></li>
+                    </ul>
+                </nav>
             </div>
 
             @show
 
-            <div class="container">
+            <div class="wrapper">
                 @yield('content')
             </div>
         </main>
