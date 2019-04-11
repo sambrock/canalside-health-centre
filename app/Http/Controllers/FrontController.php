@@ -26,11 +26,18 @@ class FrontController extends Controller
     function save(Request $request)
     {
         $this->validate($request, [
-            'firstname' => 'required|max:100',
-            'lastname' => 'required|max:100',
+            'firstname' => 'required|regex:/^[a-zA-Z ]+$/|max:50',
+            'lastname' => 'required|regex:/^[a-zA-Z ]+$/|max:50',
             'address' => 'required|max:300',
             'postcode' => 'required|max:9',
+            'mobile' => 'required|numeric|digits:11',
+            'gender' => 'required',
+            'year' => 'required|numeric|digits:4|min:1900|max:'.(date('Y')),
+            'day' => 'required|numeric|min:1|max:31',
+            'month' => 'required|numeric|min:1|max:12',
+            'doctor' => 'required|min:1',
         ]);
+
         $patient = new Patient();
         $patient->firstname = $request->firstname;
         $patient->lastname=$request->lastname;
