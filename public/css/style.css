@@ -65,6 +65,7 @@ header{
     font-weight: 700;
     font-size: 0.8em;
     padding: 0 20px;
+    color: #74bd83;
 }
 /* navigation */
 nav{
@@ -74,19 +75,34 @@ nav ul{
     margin: 0;
     padding: 0;
 }
-nav ul li{
+nav ul li a{
+    display:block;
     text-decoration: none;
     cursor: pointer;
     list-style: none;
-/*    border: 1px red solid;*/
-    border-left: 3px solid transparent;
-    padding: 5px 0 5px 50px;
+    /*    border: 1px red solid;*/
+    border-left: 4px solid transparent;
+    padding: 8px 0 8px 50px;
     box-sizing: content-box;
 }
-nav ul li:hover{
-    border-left: 3px solid #74bd83;
+nav ul li a{
+    color: #808080;
+    text-decoration: none;
 }
-
+nav ul li a:hover{
+    background: #ecf6ee;
+    border-left: 4px solid #74bd83;
+}
+nav ul li a:hover{
+    color: #74bd83;
+}
+.nav-link.active a{
+    background: #F8F8F8;
+    border-left: 4px solid #74bd83;
+}
+.nav-link.active a{
+    color: #74bd83;
+}
 /* register */
 .register{
     width: 600px;
