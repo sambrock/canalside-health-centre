@@ -11,7 +11,10 @@ class DoctorsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('doctors')->insert(['firstname'=>'Sally', 'lastname'=>'Smith']);
-        DB::table('doctors')->insert(['firstname'=>'Andy', 'lastname'=>'Johnson']);
+        DB::table('doctors')->insert(['firstname'=>'Kenneth', 'lastname'=>'Reed']);
+        DB::table('doctors')->insert(['firstname'=>'Leslie', 'lastname'=>'Hines']);
+        DB::table('doctors')->insert(['firstname'=>'Todd', 'lastname'=>'Wagner']);
+        DB::table('doctors')->insert(['firstname'=>'Marisa', 'lastname'=>'Singh']);
+        DB::table('doctors')->insert(['firstname'=>'Lawrence', 'lastname'=>'Chen']);
     }
 }
