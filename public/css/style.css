@@ -103,6 +103,50 @@ nav ul li a:hover{
 .nav-link.active a{
     color: #74bd83;
 }
+
+/* list */
+.list{
+    width: 1000px;
+}
+.patient, .patients-headers{
+    display: flex;
+}
+.patients-headers{
+    margin: 0 0 10px;
+    text-transform: uppercase;
+}
+.patients-headers span{
+    color: #808080;
+    font-size: 0.8em;
+    font-weight: 700;
+}
+.patient{
+    background: #fff;
+    padding: 10px 10px;
+    border-bottom: 1px solid #ECEDF2;
+}
+.patient-name, .patients-header-name{
+    width: 200px;
+}
+.patient-address, .patients-header-address{
+    width: 450px;
+}
+.patient-mobile, .patients-header-mobile{
+    width: 150px;
+}
+.patient-doctor, .patients-header-doctor{
+    width: 200px;
+}
+.patient > span{
+    color: #808080;
+    font-size: 0.9em;
+}
+.patient-name a{
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 700;
+}
 /* register */
 .register{
     width: 600px;
@@ -117,9 +161,11 @@ nav ul li a:hover{
 }
 .form-control label{
     display: block;
-    font-size: 1em;
+    color: #808080;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    font-weight: 700;
     margin: 0 0 5px;
-    color: #606060;
 }
 .form-control input, .form-control select{
     display: inline-block;
