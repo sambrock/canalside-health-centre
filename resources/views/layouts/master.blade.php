@@ -13,7 +13,7 @@
                 <span class="sidebar-header">Patient</span>
                 <nav>
                     <ul>
-                        <li class="nav-link {{ request()->is('list') ? 'active' : ''  }}"><a href="{{url('list')}}">List</a></li>
+                        <li class="nav-link {{ request()->is('patients') ? 'active' : ''  }}"><a href="{{url('patients')}}">List</a></li>
                         <li class="nav-link {{ request()->is('register') ? 'active' : ''  }}"><a href="{{url('register')}}">Register</a></li>
                         <li class="nav-link {{ request()->is('deletelist') ? 'active' : ''  }}"><a href="{{url('deletelist')}}">Delete </a></li>
                     </ul>
