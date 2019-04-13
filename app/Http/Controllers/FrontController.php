@@ -8,10 +8,12 @@ use App\Doctor;
 
 class FrontController extends Controller
 {
-    function index()
+    function list()
     {
-        $patients = Patient::all();
-        return view('chc/list-view', ['patients' => $patients]);
+        //$patients = Patient::all();
+        $patients = Patient::orderBy('lastname')->get();
+        $doctors = Doctor::all();
+        return view('chc/list-view', ['patients' => $patients], ['doctors' => $doctors]);
     }
     function details($patientId)
     {
