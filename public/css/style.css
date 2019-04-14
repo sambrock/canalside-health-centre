@@ -108,21 +108,36 @@ nav ul li a:hover{
 .list{
     width: 1000px;
 }
+.list-search{
+    margin: 20px 0;
+}
+#patient-search{
+    display: inline-block;
+    width: 300px;
+    padding: 10px 10px;
+    font-size: 0.9em;
+    border: 1px solid #DCDCDC;
+    border-radius: 5px;
+}
+.patients{
+    border: 1px solid #ECEDF2;
+}
 .patient, .patients-headers{
     display: flex;
 }
 .patients-headers{
-    margin: 0 0 10px;
-    text-transform: uppercase;
+    padding: 10px 20px;
+    background: #ecf6ee;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 .patients-headers span{
     color: #808080;
-    font-size: 0.8em;
     font-weight: 700;
 }
 .patient{
     background: #fff;
-    padding: 10px 10px;
+    padding: 10px 20px;
     border-bottom: 1px solid #ECEDF2;
 }
 .patient-name, .patients-header-name{
@@ -139,13 +154,17 @@ nav ul li a:hover{
 }
 .patient > span{
     color: #808080;
-    font-size: 0.9em;
 }
 .patient-name a{
-    color: #000;
+    color: #5a5a5a;
     text-decoration: none;
     cursor: pointer;
     font-weight: 700;
+}
+.patients-details .patient:last-child{
+    border: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 /* register */
 .register{
