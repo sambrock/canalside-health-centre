@@ -25,14 +25,18 @@ class FrontController extends Controller
         {
             $patients = Patient::where('firstname', 'like', '%'.$searchTerm.'%')
                 ->orwhere('lastname', 'like', '%'.$searchTerm.'%')
+                ->orwhere('mobile_number', 'like', '%'.$searchTerm.'%')
+                ->orwhere('address', 'like', '%'.$searchTerm.'%')
+                ->orwhere('postcode', 'like', '%'.$searchTerm.'%')
                 ->orderBy('lastname')
                 ->get();
-            $count = $patients->count();
+            $patient_all_count = $patients->count();
             return response()->json(['patients' => $patients]);
         }
         if($searchTerm = "none")
         {
             $patients = Patient::orderBy('lastname')->get();
+            $patient_all_count = $patients->count();
             return response()->json(['patients' => $patients]);
         }
 
