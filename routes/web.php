@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/', 'FrontController@list');
+Route::get('/', 'FrontController@index');
 Route::get('patients', 'FrontController@list');
+Route::get('name/{searchTerm}', 'FrontController@searchNames');
 Route::get('patients/details/{patientId}','FrontController@details');
 Route::get('register','FrontController@register');
 Route::post('save','FrontController@save');
