@@ -17,7 +17,7 @@ h1{
     line-height: 30px;
     margin: 0 0 20px;
     font-size: 2em;
-
+    color: #5a5a5a;
 }
 h3{
     font-size: 1.3em;
@@ -106,10 +106,17 @@ nav ul li a:hover{
 
 /* list */
 .list{
-    width: 1000px;
+    width: 1100px;
 }
 .list-search{
     margin: 20px 0;
+    display: flex;
+    vertical-align: middle;
+    color: #5a5a5a;
+    font-weight: 700;
+}
+.results-count{
+    margin: 0 0 0 auto;
 }
 #patient-search{
     display: inline-block;
@@ -128,29 +135,35 @@ nav ul li a:hover{
 .patients-headers{
     padding: 10px 20px;
     background: #ecf6ee;
+    font-size: 0.8em;
+    text-transform: uppercase;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 .patients-headers span{
-    color: #808080;
+    color: #74bd83;
     font-weight: 700;
 }
 .patient{
     background: #fff;
     padding: 10px 20px;
     border-bottom: 1px solid #ECEDF2;
+    font-size: 0.9em;
 }
 .patient-name, .patients-header-name{
-    width: 200px;
+    width: 250px;
 }
 .patient-address, .patients-header-address{
     width: 450px;
 }
 .patient-mobile, .patients-header-mobile{
-    width: 150px;
+    width: 120px;
 }
-.patient-doctor, .patients-header-doctor{
-    width: 200px;
+.patient-dob, .patients-header-dob{
+    width: 120px;
+}
+.patient-gender, .patients-header-gender{
+    width: 100px;
 }
 .patient > span{
     color: #808080;
@@ -165,6 +178,9 @@ nav ul li a:hover{
     border: none;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+.patient-gender{
+    text-transform: capitalize;
 }
 /* register */
 .register{
@@ -240,7 +256,7 @@ nav ul li a:hover{
 .form-control:nth-child(3) input{
     width: 620px;
 }
-.form-control input:focus, .form-control select:focus{
+.form-control input:focus, .form-control select:focus, #patient-search:focus{
     border: #74bd83 1px solid;
     outline: none;
 }
