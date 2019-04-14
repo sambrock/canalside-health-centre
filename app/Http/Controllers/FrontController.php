@@ -8,12 +8,34 @@ use App\Doctor;
 
 class FrontController extends Controller
 {
+    function index(){
+        return redirect('patients');
+    }
     function list()
     {
-        //$patients = Patient::all();
         $patients = Patient::orderBy('lastname')->get();
         $doctors = Doctor::all();
-        return view('chc/list-view', ['patients' => $patients], ['doctors' => $doctors]);
+        $patient_count = $patients->count();
+        $patient_all_count = $patients->count();
+        return view('chc/list-view', ['patients' => $patients], ['doctors' => $doctors])->with('patient_count', $patient_count)->with('patient_all_count', $patient_all_count);
+    }
+    function searchNames($searchTerm)
+    {
+        if ($searchTerm != "none")
+        {
+            $patients = Patient::where('firstname', 'like', '%'.$searchTerm.'%')
+                ->orwhere('lastname', 'like', '%'.$searchTerm.'%')
+                ->orderBy('lastname')
+                ->get();
+            $count = $patients->count();
+            return response()->json(['patients' => $patients]);
+        }
+        if($searchTerm = "none")
+        {
+            $patients = Patient::orderBy('lastname')->get();
+            return response()->json(['patients' => $patients]);
+        }
+
     }
     function details($patientId)
     {
@@ -54,7 +76,7 @@ class FrontController extends Controller
         $patient->dob=$dob;
         $patient->doctor_id=$request->doctor;
         $patient->save();
-        return redirect('index');
+        return redirect('patients');
     }
     function deleteList()
     {
