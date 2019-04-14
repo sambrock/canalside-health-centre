@@ -2,6 +2,8 @@
     <head>
         <title>@yield('title')</title>
         <link href="{{asset('/css/style.css')}}" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
     <body>
         <header>
@@ -32,6 +34,7 @@
             <div class="wrapper">
                 @yield('content')
             </div>
+            <script src="{{asset('/js/main.js')}}"></script>
         </main>
     </body>
 </html>
