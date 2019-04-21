@@ -25,6 +25,7 @@ class CreatePatientsTable extends Migration
             $table->unsignedInteger('doctor_id');
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE patients AUTO_INCREMENT = 1001;");
     }
 
     /**
