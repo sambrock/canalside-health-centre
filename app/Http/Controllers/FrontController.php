@@ -8,15 +8,14 @@ use App\Doctor;
 
 class FrontController extends Controller
 {
-    function index(){
+    function index()
+    {
         return redirect('patients');
     }
     function list()
     {
         $patients = Patient::orderBy('lastname')->paginate(10);
-        $patient_count = $patients->count();
-        $patient_all_count = $patients->count();
-        return view('chc/list-view', ['patients' => $patients])->with('patient_count', $patient_count)->with('patient_all_count', $patient_all_count);
+        return view('chc/list-view', ['patients' => $patients]);
     }
     function searchNames($searchTerm)
     {
@@ -28,18 +27,14 @@ class FrontController extends Controller
                 ->orwhere('address', 'like', '%'.$searchTerm.'%')
                 ->orwhere('postcode', 'like', '%'.$searchTerm.'%')
                 ->orderBy('lastname')
-                ->limit(10)
                 ->get();
-            $patient_all_count = $patients->count();
             return response()->json(['patients' => $patients]);
         }
         if($searchTerm = "none")
         {
-            $patients = Patient::orderBy('lastname')->get();
-            $patient_all_count = $patients->count();
+            $patients = Patient::orderBy('lastname')->limit(10)->get();
             return response()->json(['patients' => $patients]);
         }
-
     }
     function details($patientId)
     {

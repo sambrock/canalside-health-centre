@@ -34,7 +34,7 @@
     <div class="pagination-container">
         {!! $patients->links(); !!}
         <div class="results-count">
-            Total patients: <span id="display-count">{{ $patient_count }}</span>
+            Total patients: <span id="display-count">{{ $patients->total() }}</span>
         </div>
     </div>
 
