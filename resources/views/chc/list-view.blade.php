@@ -24,7 +24,7 @@
             <div class="patient">
                 <span class="patient-name"><a href="details/{{$patient->id}}">{{$patient->firstname}} {{$patient->lastname}}</a></span>
                 <span class="patient-address">{{$patient->address}}, {{$patient->postcode}}</span>
-                <span class="patient-dob">{{ $patient->dob->format('d/m/Y') }}</span>
+                <span class="patient-dob">{{ $patient->dob }}</span>
                 <span class="patient-gender">{{$patient->gender}}</span>
                 <span class="patient-mobile">{{$patient->mobile_number}}</span>
             </div>

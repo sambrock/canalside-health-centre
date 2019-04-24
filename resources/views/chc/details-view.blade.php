@@ -22,7 +22,7 @@
         </div>
         <div class="details-dob">
             <span class="details-label">DOB:</span>
-            <span>{{ $patient->dob->format('d/m/Y') }}</span>
+            <span>{{ $patient->dob }}</span>
         </div>
         <div class="details-contact">
             <span class="details-label">Contact:</span>
