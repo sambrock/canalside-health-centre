@@ -250,7 +250,7 @@ nav ul li a:hover{
 }
 
 /* register */
-.register{
+.register, .book{
     width: 600px;
 }
 .form-controls{
@@ -316,10 +316,10 @@ nav ul li a:hover{
 #gender-controls label:nth-child(1) .form-radio{
     margin: 15 0 0 0;
 }
-.form-control:nth-child(3){
+.register form .form-controls .form-control:nth-child(3){
     grid-column: 1 / span 2;
 }
-.form-control:nth-child(3) input{
+.register form .form-controls .form-control:nth-child(3) input{
     width: 620px;
 }
 .form-control input:focus, .form-control select:focus, #patient-search:focus{
@@ -419,4 +419,29 @@ nav ul li a:hover{
 }
 #delete-btn{
     background: #ff0000;
+}
+/* book */
+#form-patient-id{
+    grid-column: 1 / span 2;
+    border-top: 1px solid #DCDCDC;
+    border-bottom: 1px solid #DCDCDC;
+    padding: 20px 0;
+    display: flex;
+}
+#form-patient-id div:nth-child(2){
+    margin: 0 0 0 20px;
+}
+.form-control-time{
+    display: flex;
+}
+.form-control-time .form-control input{
+    width: 140px;
+    font-family: "Heebo", sans-serif;
+    font-size: 1em;
+    height: 40px;
+    vertical-align: middle;
+}
+.form-control-time .form-control:nth-child(2){
+    margin: 0 0 0 20px;
+
 }
