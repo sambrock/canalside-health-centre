@@ -23,7 +23,7 @@
                 <span class="sidebar-header">Appointment</span>
                 <nav>
                     <ul>
-                        <li><a href="{{url('list')}}">Book</a></li>
+                        <li><a href="{{url('book')}}">Book</a></li>
                         <li><a href="{{url('register')}}">Delete</a></li>
                     </ul>
                 </nav>
