@@ -20,20 +20,12 @@ class FrontController extends Controller
     }
     function searchNames($searchTerm)
     {
-        if ($searchTerm != "none")
-        {
-            $patients = Patient::where('firstname', 'like', '%'.$searchTerm.'%')
-                ->orwhere('lastname', 'like', '%'.$searchTerm.'%')
-                ->orderBy('lastname')
-                ->get();
-            $results_count = count($patients);
-            return response()->json(['patients' => $patients]);
-        }
-        if($searchTerm = "none")
-        {
-            $patients = Patient::orderBy('lastname')->limit(10)->get();
-            return response()->json(['patients' => $patients]);
-        }
+        $patients = Patient::where('firstname', 'like', '%'.$searchTerm.'%')
+            ->orwhere('lastname', 'like', '%'.$searchTerm.'%')
+            ->orderBy('lastname', 'desc')
+            ->get();
+        $results_count = count($patients);
+        return response()->json(['patients' => $patients]);
     }
     function details($patientId)
     {
@@ -58,8 +50,7 @@ class FrontController extends Controller
             ->select('patients.*', 'patients.id as patient_id', 'doctors.firstname as doctor_firstname', 'doctors.lastname as doctor_lastname')
             ->join('doctors', 'doctors.id', '=', 'patients.doctor_id')
             ->first();
-        $day = $patient->dob->format("d");
-        return view('chc/update-view', ['patient' => $patient], ['doctors' => $doctors])->with($day);
+        return view('chc/update-view', ['patient' => $patient], ['doctors' => $doctors]);
     }
     function save(Request $request, $action, $patientId)
     {
