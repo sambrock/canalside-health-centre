@@ -192,6 +192,9 @@ nav ul li a:hover{
     background: #ecf6ee;
     cursor: pointer;
 }
+.patient-error{
+    margin: 0 auto;
+}
 /* pagination */
 .pagination-container{
     margin: 20px 0;
