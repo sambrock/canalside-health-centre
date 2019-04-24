@@ -18,7 +18,7 @@
         </div>
         <div class="details-age">
             <span class="details-label">Age:</span>
-            <span>{{ $age }}</span>
+            <span>{{ Carbon\Carbon::parse($patient->dob)->age }}</span>
         </div>
         <div class="details-dob">
             <span class="details-label">DOB:</span>

@@ -33,10 +33,7 @@ class FrontController extends Controller
             ->select('patients.*', 'doctors.firstname as doctor_firstname', 'doctors.lastname as doctor_lastname')
             ->join('doctors', 'doctors.id', '=', 'patients.doctor_id')
             ->first();
-        $from = new DateTime($patient->dob);
-        $to   = new DateTime('today');
-        $age = $from->diff($to)->y;
-        return view('chc/details-view', ['patient' => $patient], ['age' => $age]);
+        return view('chc/details-view', ['patient' => $patient]);
     }
     function register()
     {
