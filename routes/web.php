@@ -13,10 +13,10 @@
 
 Route::get('/', 'FrontController@index');
 Route::get('patients', 'FrontController@list');
-Route::get('name/{searchTerm}', 'FrontController@searchNames');
-Route::get('patients/details/{patientId}','FrontController@details');
+Route::get('patients/{searchTerm}', 'FrontController@searchNames');
+Route::get('details/{patientId}','FrontController@details');
 Route::get('register','FrontController@register');
-Route::post('save','FrontController@save');
-Route::get('deletelist','FrontController@deleteList');
-Route::post('delete','FrontController@delete');
+Route::post('save/{action}/{patientId}','FrontController@save');
+Route::get('update/{patientId}','FrontController@update');
+Route::get('delete/{patientId}','FrontController@delete');
 
