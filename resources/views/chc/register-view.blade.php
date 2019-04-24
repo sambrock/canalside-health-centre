@@ -4,7 +4,7 @@
 
 <section class="register">
     <h1>Register patient</h1>
-    <form action="{{url('save')}}" method="POST" class="register-form">
+    <form action="{{url('save/register')}}/register" method="POST" class="register-form">
         {{ csrf_field() }}
         <h3>Patient details</h3>
         <div class="form-controls">
