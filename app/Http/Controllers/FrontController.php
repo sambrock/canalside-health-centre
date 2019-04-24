@@ -24,8 +24,7 @@ class FrontController extends Controller
             ->orwhere('lastname', 'like', '%'.$searchTerm.'%')
             ->orderBy('lastname', 'desc')
             ->get();
-        $results_count = count($patients);
-        return response()->json(['patients' => $patients]);
+            return response()->json(['patients' => $patients]);
     }
     function details($patientId)
     {
