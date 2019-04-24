@@ -19,4 +19,5 @@ Route::get('register','FrontController@register');
 Route::post('save/{action}/{patientId}','FrontController@save');
 Route::get('update/{patientId}','FrontController@update');
 Route::get('delete/{patientId}','FrontController@delete');
-
+Route::get('book','FrontController@book');
+Route::get('book/{patientId}','FrontController@patientBookDetails');
