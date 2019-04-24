@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Create Film')
+@section('title', 'Update')
 @section('content')
 
 <section class="register">
@@ -38,13 +38,13 @@
                 </label>
                 <div id="dob-controls">
                     <div class="dob-control {{$errors->has('day') ? 'error' : ''}}">
-                        <input type="text" id="day" name="day" placeholder="DD" maxlength="2" value="{{ $patient->dob->format('d') }}">
+                        <input type="text" id="day" name="day" placeholder="DD" maxlength="2" value="{{ Carbon\Carbon::parse($patient->dob)->format('d') }}">
                     </div>
                     <div class="dob-control {{$errors->has('month') ? 'error' : ''}}">
-                        <input type="text" id="month" name="month" placeholder="MM" maxlength="2" value="{{ $patient->dob->format('m') }}">
+                        <input type="text" id="month" name="month" placeholder="MM" maxlength="2" value="{{ Carbon\Carbon::parse($patient->dob)->format('m') }}">
                     </div>
                     <div class="dob-control {{$errors->has('year') ? 'error' : ''}}">
-                        <input type="text" id="year" name="year" placeholder="YYYY" maxlength="4" value="{{ $patient->dob->format('Y') }}">
+                        <input type="text" id="year" name="year" placeholder="YYYY" maxlength="4" value="{{ Carbon\Carbon::parse($patient->dob)->format('Y') }}">
                     </div>
                 </div>
                 <span class="form-error">{{$errors->first('day')}}</span>
