@@ -93,9 +93,6 @@ nav ul li a:hover{
     background: #ecf6ee;
     border-left: 4px solid #74bd83;
 }
-nav ul li a:hover{
-    color: #74bd83;
-}
 .nav-link.active a{
     background: #F8F8F8;
     border-left: 4px solid #74bd83;
@@ -190,6 +187,10 @@ nav ul li a:hover{
 }
 .patient-gender{
     text-transform: capitalize;
+}
+.patient:hover{
+    background: #ecf6ee;
+    cursor: pointer;
 }
 /* pagination */
 .pagination-container{
@@ -336,7 +337,7 @@ nav ul li a:hover{
 #register-btn:hover{
     background: #52ac64;
 }
-#register-btn:focus{
+#register-btn:focus, #delete-btn:focus, #update-btn:focus{
     outline: none;
 }
 .form-error{
@@ -359,12 +360,18 @@ nav ul li a:hover{
     grid-template-columns: 1fr 2fr;
     grid-gap: 20px;
 }
+.details-header{
+    display: flex;
+    justify-content: flex-start;
+    width: 1000px;
+}
 .details-patient{
     grid-column: 1;
     background: #fff;
     border: 1px solid #DCDCDC;
     border-radius: 5px;
     padding: 20px;
+    color: #676767;
 }
 .details-patient-name{
     margin: 0 0 20px;
@@ -372,14 +379,41 @@ nav ul li a:hover{
 .details-appointment{
     grid-column: 2;
 }
-.details-gender, .details-age, .details-contact, .details-address{
+.details-gender, .details-age, .details-dob, .details-contact, .details-address{
     margin: 0 0 10px;
 }
-.details-header{
-    width: 50%;
+.details-label{
     display: inline-block;
     font-size: 0.8em;
     font-weight: 700;
-    text-transform: uppercase;
     color: #676767;
+    width: 50%;
+}
+.details-gender span:nth-child(2){
+    text-transform: capitalize;
+}
+.details-address span:nth-child(2){
+    display: block;
+    margin: 5px 0 0 20px;
+}
+#update-btn, #delete-btn{
+    display: inline-block;
+    height: 30px;
+    width: 70px;
+    background: #74bd83;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 0.9em;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    line-height: 30px;
+}
+#update-btn{
+    background: #9400D3;
+    margin: 0 10px 0 auto;
+}
+#delete-btn{
+    background: #ff0000;
 }
