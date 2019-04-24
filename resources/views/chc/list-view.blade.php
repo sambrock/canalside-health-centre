@@ -1,7 +1,5 @@
 @extends('layouts.master')
-
 @section('title', 'Patients')
-
 @section('content')
 <section class="list">
     <div class="list-header">
