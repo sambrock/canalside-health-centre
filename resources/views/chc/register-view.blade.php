@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Create Film')
+@section('title', 'Register')
 @section('content')
 
 <section class="register">
