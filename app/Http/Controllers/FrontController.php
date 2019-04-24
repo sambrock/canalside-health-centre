@@ -26,12 +26,17 @@ class FrontController extends Controller
             ->get();
             return response()->json(['patients' => $patients]);
     }
-    function details($patientId)
+    function getPatientDetails($patientId)
     {
         $patient = Patient::where("patients.id", $patientId)
             ->select('patients.*', 'doctors.firstname as doctor_firstname', 'doctors.lastname as doctor_lastname')
             ->join('doctors', 'doctors.id', '=', 'patients.doctor_id')
             ->first();
+        return $patient;
+    }
+    function details($patientId)
+    {
+        $patient = $this->getPatientDetails($patientId);
         return view('chc/details-view', ['patient' => $patient]);
     }
     function register()
@@ -98,5 +103,14 @@ class FrontController extends Controller
         $patient = Patient::find($patientId);
         $patient->delete();
         return redirect('patients');
+    }
+    function book()
+    {
+        return view('chc/book-view');
+    }
+    function patientBookDetails($patientId)
+    {
+        $patient = $this->getPatientDetails($patientId);
+        return response()->json(['patient' => $patient]);
     }
 }
