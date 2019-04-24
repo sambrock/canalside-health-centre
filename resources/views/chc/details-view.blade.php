@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Film details')
+@section('title', 'Details')
 @section('content')
 <div class="details-header">
     <h1>Details</h1>
