@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Patient;
 use App\Doctor;
-use DateTime;
+use App\Appointment;
 
 class FrontController extends Controller
 {
@@ -113,5 +113,29 @@ class FrontController extends Controller
     {
         $patient = $this->getPatientDetails($patientId);
         return response()->json(['patient' => $patient]);
+    }
+    function bookAppointment(Request $request)
+    {
+        $start = $request->start;
+        $end = $request->end;
+
+        $this->validate($request, [
+            'patient_id' => 'required|numeric|exists:patients,id',
+            'doctor_id' => 'required|numeric|exists:doctors,id',
+            'date' => 'required|after_or_equal:today',
+            'start' => 'required',
+            'end' => 'required|different:start'
+        ]);
+
+        $appointment = new Appointment();
+        $appointment->patient_id = $request->patient_id;
+        $appointment->doctor_id = $request->doctor_id;
+        $appointment->date= $request->date;
+        $appointment->start = $request->start;
+        $appointment->end = $request->end;
+        $appointment->notes = $request->notes;
+        $appointment->status = 1;
+        $appointment->save();
+        return redirect('patients');
     }
 }
