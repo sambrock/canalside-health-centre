@@ -268,7 +268,7 @@ nav ul li a:hover{
     font-weight: 700;
     margin: 0 0 5px;
 }
-.form-control input, .form-control select{
+.form-control input, .form-control select, .form-control textarea{
     display: inline-block;
     width: 300px;
     padding: 10px 10px;
@@ -322,11 +322,11 @@ nav ul li a:hover{
 .register form .form-controls .form-control:nth-child(3) input{
     width: 620px;
 }
-.form-control input:focus, .form-control select:focus, #patient-search:focus{
+.form-control input:focus, .form-control select:focus, #patient-search:focus, .form-control textarea:focus{
     border: #74bd83 1px solid;
     outline: none;
 }
-#register-btn{
+#register-btn, #book-btn{
     background: #74bd83;
     border: none;
     border-radius: 10px;
@@ -337,10 +337,10 @@ nav ul li a:hover{
     margin: 30px 0;
     cursor: pointer;
 }
-#register-btn:hover{
+#register-btn:hover, #book-btn:hover{
     background: #52ac64;
 }
-#register-btn:focus, #delete-btn:focus, #update-btn:focus{
+#register-btn:focus, #delete-btn:focus, #update-btn:focus, #book-btn:focus{
     outline: none;
 }
 .form-error{
@@ -423,10 +423,12 @@ nav ul li a:hover{
 /* book */
 #form-patient-id{
     grid-column: 1 / span 2;
-    border-top: 1px solid #DCDCDC;
     border-bottom: 1px solid #DCDCDC;
     padding: 20px 0;
     display: flex;
+}
+#form-patient-id input{
+    width: 278px;
 }
 #form-patient-id div:nth-child(2){
     margin: 0 0 0 20px;
@@ -443,5 +445,33 @@ nav ul li a:hover{
 }
 .form-control-time .form-control:nth-child(2){
     margin: 0 0 0 20px;
-
+}
+#form-notes{
+    grid-column: 1 / span 2;
+    position: relative;
+}
+.form-control textarea{
+    width: 600px;
+    font-size: 1em;
+    font-family: "Heebo", sans-serif;
+}
+#char-count{
+    position: absolute;
+    bottom: -25;
+    right: 0;
+    font-size: 0.9em;
+    color: #676767;
+}
+.book-patient-details span{
+    display: block;
+    color: #676767;
+    font-size: 0.9em;
+}
+#book-patient-name{
+    font-weight: 700;
+}
+#form-book-doctor{
+    border-top: 1px solid #DCDCDC;
+    padding: 20px 0;
+    margin: 30px 0 0 0;
 }
