@@ -4,10 +4,10 @@
 
 <section class="book">
     <h1>Book appointment</h1>
-    <form action="{{url('save/register')}}/register" method="POST" class="register-form">
+    <form action="{{url('book-appointment')}}" method="POST" class="book-form">
         {{ csrf_field() }}
         <div class="form-controls">
-            <div class="form-control {{$errors->has('firstname') ? 'error' : ''}}" id="form-patient-id">
+            <div class="form-control {{$errors->has('patient_id') ? 'error' : ''}}" id="form-patient-id">
                 <div>
                     <label for="patient_id">Patient ID:</label>
                     <input type="text" id="patient_id" name="patient_id" value="{{old('patient_id')}}">
@@ -19,33 +19,21 @@
                     <span id="book-patient-contact"></span>
                 </div>
             </div>
-            <div class="form-control ">
+            <div class="form-control  {{$errors->has('date') ? 'error' : ''}}" id="form-book-date">
                 <label for="age">Date: <span class="example">E.g. 31 12 1970</span>
                 </label>
-                <div id="dob-controls">
-                    <div class="dob-control {{$errors->has('day') ? 'error' : ''}}">
-                        <input type="text" id="day" name="day" placeholder="DD" maxlength="2" value="{{ Carbon\Carbon::now()->day }}">
-                    </div>
-                    <div class="dob-control {{$errors->has('month') ? 'error' : ''}}">
-                        <input type="text" id="month" name="month" placeholder="MM" maxlength="2" value="{{ Carbon\Carbon::now()->month }}">
-                    </div>
-                    <div class="dob-control {{$errors->has('year') ? 'error' : ''}}">
-                        <input type="text" id="year" name="year" placeholder="YYYY" maxlength="4" value="{{ Carbon\Carbon::now()->year }}">
-                    </div>
-                </div>
-                <span class="form-error">{{$errors->first('day')}}</span>
-                <span class="form-error">{{$errors->first('month')}}</span>
-                <span class="form-error">{{$errors->first('year')}}</span>
+               <input type="date" id="date" name="date" value="{{ old('date', \Carbon\Carbon::today()->toDateString()) }}">
+                <span class="form-error">{{$errors->first('date')}}</span>
             </div>
             <div class="form-control-time">
                 <div class="form-control {{$errors->has('start') ? 'error' : ''}}">
                     <label for="start">Start:</label>
-                    <input type="time" value="13:00" step="900" name="start" id="start-time" min="09:00" max="13:00">
+                    <input type="time" value="{{ old('start', '09:00') }}" step="900" name="start" id="start-time" min="09:00" max="17:00">
                     <span class="form-error">{{$errors->first('start')}}</span>
                 </div>
                 <div class="form-control {{$errors->has('end') ? 'error' : ''}}">
                     <label for="end">End:</label>
-                    <input type="time" value="13:00" step="900" name="end" id="end-time" min="13:00" max="17:00">
+                    <input type="time" value="{{ old('end', '17:00') }}" step="900" name="end" id="end-time" min="09:00" max="17:00">
                     <span class="form-error">{{$errors->first('end')}}</span>
                 </div>
             </div>
@@ -58,7 +46,7 @@
         </div>
         <div class="form-control {{$errors->has('doctor') ? 'error' : ''}}" id="form-book-doctor">
             <label for="doctor">Doctor:</label>
-            <select name="doctor" id="book-doctor-select" >
+            <select name="doctor_id" id="book-doctor-select" >
                 @foreach ($doctors as $doctor)
                 <option value='{{$doctor->id}}'>{{$doctor->firstname}} {{$doctor->lastname}}</option>
                 @endforeach
