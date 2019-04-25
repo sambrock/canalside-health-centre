@@ -478,3 +478,6 @@ nav ul li a:hover{
 #form-book-date input{
     width: 280px;
 }
+#book-patient-error{
+    margin: 33px 0 0 0;
+}
