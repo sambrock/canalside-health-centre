@@ -106,7 +106,8 @@ class FrontController extends Controller
     }
     function book()
     {
-        return view('chc/book-view');
+        $doctors = Doctor::all();
+        return view('chc/book-view', ['doctors' => $doctors]);
     }
     function patientBookDetails($patientId)
     {
