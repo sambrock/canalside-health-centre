@@ -40,14 +40,40 @@ $(document).on('click', '.patient',(function(){
 }))
 
 $(function () { $('#patient_id').keyup(function() {
-    $patientId = $(this).val();
-    $.ajax({
-        method: 'get',
-        url: 'book/'+ $patientId,
-        dataType: "json",
-        success: function(data){
-               console.log(data.patient);
-        }
-    });
+    if($(this).val().length = 4){
+        $patientId = $(this).val();
+        $.ajax({
+            method: 'get',
+            url: 'book/'+ $patientId,
+            dataType: "json",
+            success: function(data){
+                if(data.patient != null){
+                    $("#book-patient-name").text(data.patient.firstname+" "+data.patient.lastname);
+                    $("#book-patient-address").text(data.patient.address+", "+data.patient.postcode);
+                    $("#book-patient-contact").text(data.patient.mobile_number);
+                    $("#book-patient-contact").text(data.patient.mobile_number);
+                    //$("#book-patient-doctor").val(data.patient.doctor_id);
+                    $("#book-doctor-select option").removeAttr('selected','selected');
+                    $("#book-doctor-select option[value="+data.patient.doctor_id+"]").attr('selected','selected');
+                }
+            }
+        });
+    }
 });
               });
+
+$(document).ready(function() {
+    $("#notes-txtarea").on('keyup paste', function(){ // <---remove ',' comma
+        var characters = $("#notes-txtarea").val().replace(/(<([^>]+)>)/ig,"").length; // '$' is missing from the selector
+        $("#char-count").text(500 - characters);
+    });
+});
+
+//Time validation
+$('#start-time').change(function(){
+    $('#end-time').attr('min', $(this).val() );
+})
+
+$('#end-time').change(function(){
+    $('#start-time').attr('max', $(this).val() );
+})
