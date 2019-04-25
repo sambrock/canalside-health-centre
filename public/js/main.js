@@ -48,13 +48,22 @@ $(function () { $('#patient_id').keyup(function() {
             dataType: "json",
             success: function(data){
                 if(data.patient != null){
+                    $("#book-patient-error").hide();
                     $("#book-patient-name").text(data.patient.firstname+" "+data.patient.lastname);
                     $("#book-patient-address").text(data.patient.address+", "+data.patient.postcode);
-                    $("#book-patient-contact").text(data.patient.mobile_number);
                     $("#book-patient-contact").text(data.patient.mobile_number);
                     //$("#book-patient-doctor").val(data.patient.doctor_id);
                     $("#book-doctor-select option").removeAttr('selected','selected');
                     $("#book-doctor-select option[value="+data.patient.doctor_id+"]").attr('selected','selected');
+                }
+                else{
+                    if($('#patient_id').val().length >= 4){
+                        $("#book-patient-name").empty();
+                        $("#book-patient-address").empty();
+                        $("#book-patient-contact").empty();
+                        $("#book-patient-error").show();
+                    }
+
                 }
             }
         });

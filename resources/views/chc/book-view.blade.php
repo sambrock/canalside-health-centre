@@ -17,6 +17,7 @@
                     <span id="book-patient-name"></span>
                     <span id="book-patient-address"></span>
                     <span id="book-patient-contact"></span>
+                    <span id="book-patient-error" style="display: none;">No patient found.</span>
                 </div>
             </div>
             <div class="form-control  {{$errors->has('date') ? 'error' : ''}}" id="form-book-date">
