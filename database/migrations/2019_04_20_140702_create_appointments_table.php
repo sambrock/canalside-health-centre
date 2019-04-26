@@ -19,7 +19,7 @@ class CreateAppointmentsTable extends Migration
             $table->time('start');
             $table->time('end');
             $table->integer('status');
-            $table->string('notes', 600);
+            $table->string('notes', 600)->nullable();
             $table->unsignedInteger('patient_id');
             $table->unsignedInteger('doctor_id');
             $table->timestamps();
