@@ -143,13 +143,13 @@ nav ul li a:hover{
     border: 1px solid #DCDCDC;
     border-radius: 5px;
 }
-.patients{
+.patients, .appointments{
     border: 1px solid #ECEDF2;
 }
-.patient, .patients-headers, .patient-result{
+.patient, .patients-headers, .patient-result, .appointments-headers, .appointment{
     display: flex;
 }
-.patients-headers{
+.patients-headers, .appointments-headers{
     padding: 10px 30px;
     background: #fff;
     font-size: 0.8em;
@@ -158,11 +158,11 @@ nav ul li a:hover{
     border-top-right-radius: 5px;
     border-bottom: 2px solid #ECEDF2;
 }
-.patients-headers span{
+.patients-headers span, .appointments-headers span{
     color: #808080;
     font-weight: 700;
 }
-.patient, .patient-result{
+.patient, .patient-result, .appointment{
     background: #fff;
     padding: 15px 30px;
     border-bottom: 1px solid #ECEDF2;
@@ -183,7 +183,7 @@ nav ul li a:hover{
 .patient-gender, .patients-header-gender{
     width: 100px;
 }
-.patient > span, .patient-result > span{
+.patient > span, .patient-result > span, .appointment > span{
     color: #676767;
 }
 .patient-name a{
@@ -193,7 +193,7 @@ nav ul li a:hover{
     font-weight: 700;
     /*    margin: 0 0 0 10px;*/
 }
-.patients-details .patient:last-child{
+.patients-details .patient:last-child, .appointments-details .appointment:last-child{
     border: none;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -201,7 +201,7 @@ nav ul li a:hover{
 .patient-gender{
     text-transform: capitalize;
 }
-.patient:hover{
+.patient:hover, .patient-result:hover{
     background: #ecf6ee;
     cursor: pointer;
 }
@@ -372,19 +372,19 @@ nav ul li a:hover{
 /* details */
 .details-container{
     display: grid;
-    width: 1000px;
+    width: 1100px;
     grid-template-columns: 1fr 2fr;
     grid-gap: 20px;
 }
 .details-header{
     display: flex;
     justify-content: flex-start;
-    width: 1000px;
+    width: 1100px;
 }
 .details-patient{
     grid-column: 1;
     background: #fff;
-    border: 1px solid #DCDCDC;
+    border: 1px solid #ECEDF2;
     border-radius: 5px;
     padding: 20px;
     color: #676767;
@@ -427,7 +427,7 @@ nav ul li a:hover{
     line-height: 30px;
 }
 #update-btn{
-    background: #9400D3;
+    background: #0080ff;
     margin: 0 10px 0 auto;
 }
 #delete-btn{
@@ -498,4 +498,48 @@ nav ul li a:hover{
 /* login */
 #login-form .form-control{
     margin: 10px 0 0 0;
+}
+
+/* appointments */
+.appointments-header-date, .appointment-date{
+    width: 100px;
+}
+.appointments-header-start, .appointments-header-end, .appointment-start, .appointment-end{
+    width: 60px;
+}
+.appointments-header-patient, .appointment-patient{
+    width: 250px;
+    font-weight: 700;
+}
+.appointments-header-notes, .appointment-notes{
+    width: 400px;
+}
+.appointments-header-status, .appointment-status{
+    width: 100px;
+}
+.appointment-due{
+    background: #f1b517;
+    color: #fff !important;
+    padding: 2px 10px;
+    border-radius:10px;
+}
+.appointment-in-progress{
+    background: #b517f1;
+    color: #fff !important;
+    padding: 2px 10px;
+    border-radius:10px;
+}
+.appointment-complete{
+    background: #17f17f;
+    color: #fff !important;
+    padding: 2px 10px;
+    border-radius:10px;
+}
+#cancel-btn{
+    margin: 0 0 0 auto;
+    color: #676767;
+    text-decoration: none;
+}
+#cancel-btn:hover{
+    color: #ff0000;
 }
