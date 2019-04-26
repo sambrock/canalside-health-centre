@@ -25,6 +25,8 @@ Route::get('register','FrontController@register')->middleware('auth');
 Route::post('save/{action}/{patientId}','FrontController@save')->middleware('auth');
 Route::get('update/{patientId}','FrontController@update')->middleware('auth');
 Route::get('delete/{patientId}','FrontController@delete')->middleware('auth');
+Route::get('appointments','FrontController@appointments')->middleware('auth');
+Route::get('cancel/{appointmentId}','FrontController@cancel')->middleware('auth');
 Route::get('book','FrontController@book')->middleware('auth');
 Route::get('book/{patientId}','FrontController@patientBookDetails')->middleware('auth');
 Route::post('book-appointment','FrontController@bookAppointment')->middleware('auth');
