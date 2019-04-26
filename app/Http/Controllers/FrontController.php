@@ -7,6 +7,7 @@ use App\Patient;
 use App\Doctor;
 use App\Appointment;
 use Auth;
+use Carbon\Carbon;
 
 class FrontController extends Controller
 {
@@ -67,8 +68,9 @@ class FrontController extends Controller
     }
     function details($patientId)
     {
+        $appointments = Appointment::where('patient_id', $patientId)->paginate(10);
         $patient = $this->getPatientDetails($patientId);
-        return view('chc/details-view', ['patient' => $patient]);
+        return view('chc/details-view', ['patient' => $patient], ['appointments' => $appointments]);
     }
     function register()
     {
@@ -135,10 +137,24 @@ class FrontController extends Controller
         $patient->delete();
         return redirect('patients');
     }
+    function appointments()
+    {
+        $appointments = Appointment::select('patients.*', 'appointments.*', 'patients.id as patient_id', 'appointments.id as appointment_id')
+            ->where('date', Carbon::now()->format('Y-m-d'))
+            ->join('patients', 'patients.id', '=', 'appointments.patient_id')
+            ->paginate(10);
+        return view('chc/appointments-view', ['appointments' => $appointments]);
+    }
     function book()
     {
         $doctors = Doctor::all();
         return view('chc/book-view', ['doctors' => $doctors]);
+    }
+    function cancel($appointmentId)
+    {
+        $appointment = Appointment::find($appointmentId);
+        $appointment ->delete();
+        return redirect()->back();
     }
     function patientBookDetails($patientId)
     {
