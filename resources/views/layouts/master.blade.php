@@ -8,9 +8,6 @@
     <body>
         <header>
             <img id="logo" src="{{asset('/img/chc-logo.svg')}}" height="18">
-            @if(isset(Auth::user()->id))
-                <span>Hi, {{Auth::user()->name}}</span>
-            @endif
         </header>
         @section('sidebar')
         <main>
@@ -30,6 +27,12 @@
                         <li><a href="{{url('register')}}">Delete</a></li>
                     </ul>
                 </nav>
+                <div class="user-container">
+                    @if(isset(Auth::user()->id))
+                    <span id="username">{{Auth::user()->name}}</span>
+                    | <a href="{{ url('logout') }}">Logout</a>
+                    @endif
+                </div>
             </div>
 
             @show
