@@ -22,3 +22,4 @@ Route::get('delete/{patientId}','FrontController@delete');
 Route::get('book','FrontController@book');
 Route::get('book/{patientId}','FrontController@patientBookDetails');
 Route::post('book-appointment','FrontController@bookAppointment');
+Route::post('check-availability','FrontController@checkAvailability');
