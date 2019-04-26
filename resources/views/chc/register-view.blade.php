@@ -6,7 +6,6 @@
     <h1>Register patient</h1>
     <form action="{{url('save/register')}}/register" method="POST" class="register-form">
         {{ csrf_field() }}
-        <h3>Patient details</h3>
         <div class="form-controls">
             <div class="form-control {{$errors->has('firstname') ? 'error' : ''}}">
                 <label for="firstname ">First name:</label>
@@ -61,8 +60,7 @@
                 <span class="form-error">{{$errors->first('gender')}}</span>
             </div>
         </div>
-        <h3>Doctor details</h3>
-        <div class="form-control {{$errors->has('doctor') ? 'error' : ''}}">
+        <div class="form-control {{$errors->has('doctor') ? 'error' : ''}}" id="form-register-doc">
             <label for="doctor">Doctor:</label>
             <select name="doctor" >
                 @foreach ($doctors as $doctor)
