@@ -15,7 +15,7 @@
                 <span class="sidebar-header">Patient</span>
                 <nav>
                     <ul>
-                        <li class="nav-link {{ request()->is('patients') ? 'active' : ''  }}"><a href="{{url('patients')}}">Browse</a></li>
+                        <li class="nav-link {{ request()->is('patients') ? 'active' : ''  }}"><a href="{{url('patients')}}">List</a></li>
                         <li class="nav-link {{ request()->is('register') ? 'active' : ''  }}"><a href="{{url('register')}}">Register</a></li>
                     </ul>
                 </nav>
