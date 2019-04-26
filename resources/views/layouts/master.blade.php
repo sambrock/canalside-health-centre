@@ -15,16 +15,15 @@
                 <span class="sidebar-header">Patient</span>
                 <nav>
                     <ul>
-                        <li class="nav-link {{ request()->is('patients') ? 'active' : ''  }}"><a href="{{url('patients')}}">List</a></li>
+                        <li class="nav-link {{ request()->is('patients') ? 'active' : ''  }}"><a href="{{url('patients')}}">Browse</a></li>
                         <li class="nav-link {{ request()->is('register') ? 'active' : ''  }}"><a href="{{url('register')}}">Register</a></li>
-                        <li class="nav-link {{ request()->is('deletelist') ? 'active' : ''  }}"><a href="{{url('deletelist')}}">Delete </a></li>
                     </ul>
                 </nav>
                 <span class="sidebar-header">Appointment</span>
                 <nav>
                     <ul>
-                        <li><a href="{{url('book')}}">Book</a></li>
-                        <li><a href="{{url('register')}}">Delete</a></li>
+                        <li class="nav-link {{ request()->is('appointments') ? 'active' : ''  }}"><a href="{{url('appointments')}}">List</a></li>
+                        <li class="nav-link {{ request()->is('book') ? 'active' : ''  }}"><a href="{{url('book')}}">Book</a></li>
                     </ul>
                 </nav>
                 <div class="user-container">
