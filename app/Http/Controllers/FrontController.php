@@ -133,6 +133,10 @@ class FrontController extends Controller
     }
     function delete($patientId)
     {
+        $appointments=Appointment::where('patient_id', $patientId)->get();
+        foreach($appointments as $app){
+            $app->delete();
+        }
         $patient = Patient::find($patientId);
         $patient->delete();
         return redirect('patients');
@@ -142,6 +146,7 @@ class FrontController extends Controller
         $appointments = Appointment::select('patients.*', 'appointments.*', 'patients.id as patient_id', 'appointments.id as appointment_id')
             ->where('date', Carbon::now()->format('Y-m-d'))
             ->join('patients', 'patients.id', '=', 'appointments.patient_id')
+            ->orderBy('start', 'asc')
             ->paginate(10);
         return view('chc/appointments-view', ['appointments' => $appointments]);
     }
