@@ -45,16 +45,16 @@
                 <span id="char-count">500</span>
             </div>
         </div>
-        <div class="form-control {{$errors->has('doctor') ? 'error' : ''}}" id="form-book-doctor">
+        <div class="form-control" id="form-book-doctor">
             <label for="doctor">Doctor:</label>
             <select name="doctor_id" id="book-doctor-select" >
                 @foreach ($doctors as $doctor)
                 <option value='{{$doctor->id}}'>{{$doctor->firstname}} {{$doctor->lastname}}</option>
                 @endforeach
             </select>
-            <span class="form-error">{{$errors->first('doctor')}}</span>
+            <span class="form-error" style="display: none;">This doctor is not available for that time slot.</span>
         </div>
-        <input id="book-btn" type="submit" name="submitBtn" value="Book">
+        <input id="book-btn" type="submit" name="submitBtn" value="Book" >
     </form>
 </section>
 @endsection
