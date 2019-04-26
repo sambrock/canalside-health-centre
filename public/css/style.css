@@ -369,6 +369,15 @@ nav ul li a:hover{
 .form-control.error input:focus, .form-control.error select:focus{
     outline: none;
 }
+#form-register-doc{
+    border-top: 1px solid #DCDCDC;
+    padding: 20px 0;
+    margin: 30px 0 0 0;
+    width: 620px;
+}
+.register-form .form-control:nth-child(1), .register-form .form-control:nth-child(2){
+    padding: 20px 0 0 0;
+}
 /* details */
 .details-container{
     display: grid;
