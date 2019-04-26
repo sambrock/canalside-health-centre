@@ -33,11 +33,18 @@ $(function () { $('#patient-search').keyup(function() {
 });
               });
 
-$(document).on('click', '.patient',(function(){
+$(document).on('click', '.patient-result', (function(){
     $link = $(this).find("a").attr("href")
     console.log($link);
     window.location = $link;
 }))
+
+$(document).on('click', '.patient', (function(){
+    $link = $(this).find("a").attr("href")
+    console.log($link);
+    window.location = $link;
+}))
+
 
 $(function () { $('#patient_id').keyup(function() {
     if($(this).val().length = 4){
