@@ -39,6 +39,11 @@ class FrontController extends Controller
             return redirect('login');
         }
     }
+    function logout()
+    {
+        Auth::logout();
+        return redirect('login');
+    }
     function list()
     {
         $patients = Patient::orderBy('lastname')->paginate(10);
