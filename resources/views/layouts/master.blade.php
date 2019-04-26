@@ -8,6 +8,9 @@
     <body>
         <header>
             <img id="logo" src="{{asset('/img/chc-logo.svg')}}" height="18">
+            @if(isset(Auth::user()->id))
+                <span>Hi, {{Auth::user()->name}}</span>
+            @endif
         </header>
         @section('sidebar')
         <main>
