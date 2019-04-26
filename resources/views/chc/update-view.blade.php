@@ -6,7 +6,6 @@
     <h1>Update patient</h1>
     <form action="{{url('save/update')}}/{{ $patient->patient_id }}" method="POST" class="register-form">
         {{ csrf_field() }}
-        <h3>Patient details</h3>
         <div class="form-controls">
             <div class="form-control {{$errors->has('firstname') ? 'error' : ''}}">
                 <label for="firstname ">First name:</label>
@@ -67,8 +66,7 @@
                 <span class="form-error">{{$errors->first('gender')}}</span>
             </div>
         </div>
-        <h3>Doctor details</h3>
-        <div class="form-control {{$errors->has('doctor') ? 'error' : ''}}">
+        <div class="form-control {{$errors->has('doctor') ? 'error' : ''}}" id="form-register-doc">
             <label for="doctor">Doctor:</label>
             <select name="doctor" >
                 <option value='{{$patient->doctor_id}}' selected>{{$patient->doctor_firstname}} {{$patient->doctor_lastname}}</option>
