@@ -24,7 +24,7 @@ class FrontController extends Controller
             ->orwhere('lastname', 'like', '%'.$searchTerm.'%')
             ->orderBy('lastname', 'desc')
             ->get();
-            return response()->json(['patients' => $patients]);
+        return response()->json(['patients' => $patients]);
     }
     function getPatientDetails($patientId)
     {
@@ -137,5 +137,28 @@ class FrontController extends Controller
         $appointment->status = 1;
         $appointment->save();
         return redirect('patients');
+    }
+    function checkAvailability(Request $request)
+    {
+        $patient_id = $request->patient_id;
+        $doctor_id = $request->doctor_id;
+        $date = $request->date;
+        $start = $request->start.":00";
+        $end = $request->end;
+
+        $appointments = Appointment::where("doctor_id", $doctor_id)
+            ->where('date', $date)
+            ->get();
+
+        $success = true;
+        foreach($appointments as $appointment){
+            if(($start >= $appointment->start) && ($start <= $appointment->end)){
+                $success = false;
+            }else if(($end >= $appointment->start) && ($end <= $appointment->end)){
+                $success = false;
+            }
+        }
+
+        return response()->json(['success' => $success]);
     }
 }
