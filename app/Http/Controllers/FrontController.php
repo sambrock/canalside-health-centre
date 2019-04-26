@@ -6,12 +6,38 @@ use Illuminate\Http\Request;
 use App\Patient;
 use App\Doctor;
 use App\Appointment;
+use Auth;
 
 class FrontController extends Controller
 {
     function index()
     {
         return redirect('patients');
+    }
+    function login()
+    {
+        return view('chc/login-view');
+    }
+    function checkLogin(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required|numeric',
+            'password' => 'required'
+        ]);
+
+        $user_data = array(
+            'id' => $request->get('id'),
+            'password' => $request->get('password')
+        );
+
+        if(Auth::attempt($user_data))
+        {
+            return redirect('patients');
+        }
+        else
+        {
+            return redirect('login');
+        }
     }
     function list()
     {
