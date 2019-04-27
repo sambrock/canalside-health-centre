@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Patients')
+@section('title', 'Appointments')
 @section('content')
 <section class="list">
     <div class="list-header">
