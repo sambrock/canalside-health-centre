@@ -412,7 +412,7 @@ nav ul li a:hover{
     font-size: 0.8em;
     font-weight: 700;
     color: #676767;
-    width: 50%;
+    width: 40%;
 }
 .details-gender span:nth-child(2){
     text-transform: capitalize;
