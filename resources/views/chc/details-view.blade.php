@@ -1,16 +1,30 @@
 @extends('layouts.master')
 @section('title', 'Details')
 @section('content')
+
+@if(Auth::user()->role == "Patient")
+@section('sidebar')
+@stop
+@endif
+
 <div class="details-header">
     <h1>Details</h1>
+    @if(Auth::user()->role == "Receptionist")
     <a id="update-btn" href="{{ url('/') }}/update/{{ $patient->id }}">Update</a>
     <a id="delete-btn" href="{{ url('/') }}/delete/{{ $patient->id }}">Delete</a>
+    @elseif(Auth::user()->role == "Patient")
+    <a id="update-btn" href="{{ url('/') }}/my-details/update">Update</a>
+    @endif
 </div>
 
 <div class="details-container">
     <section class="details-patient">
         <div class="details-patient-name">
             <h2>{{$patient->firstname}} {{$patient->lastname}}</h2>
+        </div>
+        <div class="details-id">
+            <span class="details-label">Patient ID:</span>
+            <span>{{$patient->patient_id}}</span>
         </div>
         <div class="details-gender">
             <span class="details-label">Gender:</span>
@@ -79,4 +93,9 @@
 
     </section>
 </div>
+@if(isset(Auth::user()->id))
+<div class="user-container user-patient">
+    <a href="{{ url('logout') }}">Logout</a>
+</div>
+@endif
 @endsection

@@ -2,9 +2,18 @@
 @section('title', 'Update')
 @section('content')
 
+@if(Auth::user()->role == "Patient")
+@section('sidebar')
+@stop
+@endif
+
 <section class="register">
     <h1>Update patient</h1>
+    @if(Auth::user()->role == "Patient")
+    <form action="{{url('save/patient-update')}}/{{ $patient->patient_id }}" method="POST" class="register-form">
+    @elseif(Auth::user()->role == "Receptionist")
     <form action="{{url('save/update')}}/{{ $patient->patient_id }}" method="POST" class="register-form">
+    @endif
         {{ csrf_field() }}
         <div class="form-controls">
             <div class="form-control {{$errors->has('firstname') ? 'error' : ''}}">
@@ -78,7 +87,7 @@
             </select>
             <span class="form-error">{{$errors->first('doctor')}}</span>
         </div>
-        <input id="register-btn" type="submit" name="submitBtn" value="Register">
+        <input id="register-btn" type="submit" name="submitBtn" value="Update">
     </form>
 </section>
 @endsection
