@@ -33,7 +33,14 @@ class FrontController extends Controller
 
         if(Auth::attempt($user_data))
         {
-            return redirect('patients');
+            if(Auth::user()->role == "Patient")
+            {
+                return redirect('my-details');
+            }
+            elseif(Auth::user()->role == "Patient")
+            {
+                return redirect('patients');
+            }
         }
         else
         {
@@ -61,7 +68,7 @@ class FrontController extends Controller
     function getPatientDetails($patientId)
     {
         $patient = Patient::where("patients.id", $patientId)
-            ->select('patients.*', 'doctors.firstname as doctor_firstname', 'doctors.lastname as doctor_lastname')
+            ->select('patients.*', 'patients.id as patient_id','doctors.firstname as doctor_firstname', 'doctors.lastname as doctor_lastname')
             ->join('doctors', 'doctors.id', '=', 'patients.doctor_id')
             ->first();
         return $patient;
@@ -105,7 +112,7 @@ class FrontController extends Controller
         {
             $patient = new Patient();
         }
-        elseif($action === "update")
+        elseif($action === "update" || $action === "patient-update")
         {
             $patient = Patient::find($patientId);
         }
@@ -129,6 +136,10 @@ class FrontController extends Controller
         elseif($action === "update")
         {
             return redirect('details'.'/'.$patientId);
+        }
+        elseif($action === "patient-update")
+        {
+            return redirect('my-details');
         }
     }
     function delete($patientId)
@@ -188,7 +199,7 @@ class FrontController extends Controller
         $appointment->notes = $request->notes;
         $appointment->status = 1;
         $appointment->save();
-        return redirect('patients');
+        return redirect('appointments');
     }
     function checkAvailability(Request $request)
     {
@@ -212,5 +223,22 @@ class FrontController extends Controller
         }
 
         return response()->json(['success' => $success]);
+    }
+    function myDetails()
+    {
+        $patientId = Auth::user()->id;
+        $appointments = Appointment::where('patient_id', $patientId)->paginate(10);
+        $patient = $this->getPatientDetails($patientId);
+        return view('chc/details-view', ['patient' => $patient], ['appointments' => $appointments]);
+    }
+    function myDetailsUpdate()
+    {
+        $patientId = Auth::user()->id;
+        $doctors = Doctor::all();
+        $patient = Patient::where("patients.id", $patientId)
+            ->select('patients.*', 'patients.id as patient_id', 'doctors.firstname as doctor_firstname', 'doctors.lastname as doctor_lastname')
+            ->join('doctors', 'doctors.id', '=', 'patients.doctor_id')
+            ->first();
+        return view('chc/update-view', ['patient' => $patient], ['doctors' => $doctors]);
     }
 }
