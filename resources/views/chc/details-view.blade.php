@@ -93,7 +93,7 @@
 
     </section>
 </div>
-@if(isset(Auth::user()->id))
+@if(Auth::user()->role == "Patient")
 <div class="user-container user-patient">
     <a href="{{ url('logout') }}">Logout</a>
 </div>

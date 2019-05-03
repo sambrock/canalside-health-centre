@@ -8,10 +8,12 @@
 @endif
 
 <section class="register">
-    <h1>Update patient</h1>
+
     @if(Auth::user()->role == "Patient")
+    <h1>Update</h1>
     <form action="{{url('save/patient-update')}}/{{ $patient->patient_id }}" method="POST" class="register-form">
     @elseif(Auth::user()->role == "Receptionist")
+    <h1>Update patient</h1>
     <form action="{{url('save/update')}}/{{ $patient->patient_id }}" method="POST" class="register-form">
     @endif
         {{ csrf_field() }}
@@ -75,6 +77,7 @@
                 <span class="form-error">{{$errors->first('gender')}}</span>
             </div>
         </div>
+        @if(Auth::user()->role == "Receptionist")
         <div class="form-control {{$errors->has('doctor') ? 'error' : ''}}" id="form-register-doc">
             <label for="doctor">Doctor:</label>
             <select name="doctor" >
@@ -87,6 +90,9 @@
             </select>
             <span class="form-error">{{$errors->first('doctor')}}</span>
         </div>
+        @elseif(Auth::user()->role == "Patient")
+        <input type="text" id="doctor" name="doctor" value="{{$patient->doctor_id}}" hidden>
+        @endif
         <input id="register-btn" type="submit" name="submitBtn" value="Update">
     </form>
 </section>
