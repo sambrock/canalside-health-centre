@@ -37,7 +37,7 @@ class FrontController extends Controller
             {
                 return redirect('my-details');
             }
-            elseif(Auth::user()->role == "Patient")
+            elseif(Auth::user()->role == "Receptionist")
             {
                 return redirect('patients');
             }
